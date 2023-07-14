@@ -15,6 +15,7 @@ public class TempController {
 
         // 화면에 출력될 화면과 데이터를 세팅하는 객체
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("name", Math.random());
         modelAndView.setViewName("first");
 
         return modelAndView;
