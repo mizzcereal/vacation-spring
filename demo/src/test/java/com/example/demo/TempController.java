@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.Random;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,10 +28,11 @@ public class TempController {
     @GetMapping("/lucky")
     public ModelAndView luck() {
 
- 
-    
+        Random random = new Random();
+        int randomNumber = random.nextInt(10) + 1;
+
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("lucky", Math.floor(Math.random() * 10) + 1);
+        modelAndView.addObject("lucky", randomNumber);
         modelAndView.setViewName("second");
 
         return modelAndView;
