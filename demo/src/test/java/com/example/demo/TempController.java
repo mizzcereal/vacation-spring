@@ -12,16 +12,28 @@ public class TempController {
     // ~~Mapping 화면 주소를 설정하는 어노테이션
     @GetMapping("/hello") // 실행하기전에 붙혀주기
     public ModelAndView index() {
-
+        System.out.println(this); // this는 클래스로 만든 인스턴스 - 자기 자신을 가리킨다. (TempController)
         // 화면에 출력될 화면과 데이터를 세팅하는 객체
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("name", Math.random());
         modelAndView.setViewName("first");
+        // html 이름이 first라 first로 설정
 
         return modelAndView;
 
     }
 
+    @GetMapping("/lucky")
+    public ModelAndView luck() {
+
+ 
+    
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("lucky", Math.floor(Math.random() * 10) + 1);
+        modelAndView.setViewName("second");
+
+        return modelAndView;
+    }
 }
 
 // 위의 코드들로 mvc 3개가 다모임
