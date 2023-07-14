@@ -8,11 +8,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class TempController {
 
-    @GetMapping("/") // 실행하기전에 붙혀주기
+    @GetMapping("/hello") // 실행하기전에 붙혀주기
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("first");
 
         return modelAndView;
 
