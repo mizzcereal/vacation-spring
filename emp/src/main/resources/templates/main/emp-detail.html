@@ -7,11 +7,21 @@
 </head>
 <body>
     <h1>직원 상세</h1>
-    <ul>
-        <li>직원번호 : </li>
-        <li>직원이름 : </li>
-        <li>직원성 : </li> 
-        <li>직원월급 : </li>
-    </ul>
+    <div>
+        <span>직원번호 : </span>
+        <span th:text="${empDetailDTO.employeeId}"></span>
+    </div>
+    <div>
+        <span>직원이름 : </span>
+        <span th:text="${empDetailDTO.firstName}"></span>
+    </div>
+    <div>
+        <span>직원 성: </span>
+        <span th:text="${empDetailDTO.lastName}"></span>
+    </div>
+    <div>
+        <span>직원월급 : </span>
+        <span th:text="${empDetailDTO.salary}"></span>
+    </div>
 </body>
 </html>

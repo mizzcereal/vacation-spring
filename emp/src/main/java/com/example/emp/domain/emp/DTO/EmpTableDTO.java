@@ -1,5 +1,7 @@
 package com.example.emp.domain.emp.DTO;
 
+import java.util.List;
+
 import com.example.emp.model.employees.entity.EmployeesEntity;
 
 import lombok.AllArgsConstructor;
@@ -24,5 +26,13 @@ public class EmpTableDTO {
                 .employeeId(employeesEntity.getEmployeeId())
                 .firstName(employeesEntity.getFirstName())
                 .build();
+    }
+
+    public static List<EmpTableDTO> fromEntityList(List<EmployeesEntity> employeesEntityList) {
+
+        return employeesEntityList
+                .stream()
+                .map((employeesEntity) -> fromEntity(employeesEntity)) //함수이므로 매개변수 이름은 아무거나 해도 상관없으니 entity로 하면 알아보기 쉽다.
+                .toList();
     }
 }

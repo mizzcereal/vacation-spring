@@ -10,24 +10,24 @@
         border-color: black;
         border-width: 2px;
         border-style: solid;
+        margin: 10px;
       }
     </style>
   </head>
   <body>
     <h1>직원 리스트</h1>
-    <div class="list">
-        <a href="emp/1">
-      <ul>
-        <li>직원번호 : </li>
-        <li>직원이름 : </li>
-      </ul>
-        </a>
+    <div class="list" th:onclick="goDetail([[${dto.employeeId}]])" th:each="dto : ${empTableDTOList}">
+        <span>직원번호 : </span>
+        <span th:text="${dto.employeeId}"></span>
+        <br>
+        <span>직원이름 : </span>
+        <span th:text="${dto.firstName}"></span>
     </div>
-    <div>
-      <ul>
-        <li>직원번호 :</li>
-        <li>직원이름 :</li>
-      </ul>
-    </div>
+
+    <script>
+      const goDetail = (employeeId) => {
+        location.href = "/emp/" + employeeId;
+      }
+    </script>
   </body>
 </html>
