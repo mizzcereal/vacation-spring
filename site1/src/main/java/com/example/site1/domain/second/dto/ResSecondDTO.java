@@ -21,7 +21,7 @@ public class ResSecondDTO {
         ResSecondDTO resSecondDTO = new ResSecondDTO();
         resSecondDTO.setTitle(postEntity.getTitle());
         resSecondDTO.setContent(postEntity.getContent());
-        resSecondDTO.setUserIdx(postEntity.getUserIdx());
+        // resSecondDTO.setUserIdx(postEntity.getUserIdx());
         return resSecondDTO;
     }
 }
