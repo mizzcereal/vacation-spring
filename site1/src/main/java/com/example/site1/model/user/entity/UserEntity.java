@@ -1,9 +1,9 @@
-package com.example.site1.model;
-
-
+package com.example.site1.model.user.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class IndexEntity {
-    
-    @Id
+public class UserEntity {
 
-    @Column(name = "idx", nullable = false, unique = true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idx")
     private Integer idx;
 
     @Column(name = "id", nullable = false)
@@ -28,9 +28,10 @@ public class IndexEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
+
     @Override
-    public String toString(){
-        return "IndexEntity [idx = " + idx + ", id = " + id + ", password  = " + password +"]";
+    public String toString() {
+        return "UserEntity [idx=" + idx + ", id=" + id + ", password=" + password + "]";
     }
 
 }
