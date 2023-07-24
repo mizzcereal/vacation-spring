@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS `post`;
+DROP TABLE IF EXISTS `user`;
+
+
 CREATE TABLE `user` (
   `idx` int(11) NOT NULL AUTO_INCREMENT,
   `id` varchar(255) NOT NULL,

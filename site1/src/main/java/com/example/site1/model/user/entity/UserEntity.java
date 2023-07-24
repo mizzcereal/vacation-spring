@@ -34,7 +34,7 @@ public class UserEntity {
     private String password;
 
     @OneToMany(mappedBy = "userEntity")
-    private List<PostEntity> postEntity;
+    private List<PostEntity> postEntityList;
 
 
     @Override
