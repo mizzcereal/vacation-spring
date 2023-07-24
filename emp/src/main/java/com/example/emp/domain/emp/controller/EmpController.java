@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.emp.domain.emp.DTO.EmpDetailDTO;
@@ -19,9 +20,10 @@ public class EmpController {
     private EmpService empService;
     
     @GetMapping("/emp") //주소가져옴 
-    public ModelAndView EmpMainController(){
+    public ModelAndView EmpMainController(@RequestParam(required = false) String firstName){
+        System.out.println(firstName);
         ModelAndView modelAndView = new ModelAndView();
-        List<EmpTableDTO> empTableDTOList = empService.getEmpTableData();
+        List<EmpTableDTO> empTableDTOList = empService.getSearchEmpTableData(firstName);
         modelAndView.addObject("empTableDTOList", empTableDTOList);
         modelAndView.setViewName("main/emp-list");
         return modelAndView;
