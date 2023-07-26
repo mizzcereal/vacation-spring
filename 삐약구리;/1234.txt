@@ -1,0 +1,16 @@
+홈페이지 제작 순서
+
+디자인 제작
+- 정적 html 제작
+- 화면에 맞춰서 DB 설계
+
+=======================
+스프링부트 세팅
+- 화면에 맞춰서 controller 제작
+
+- 테이블에 맞춰서 entity 제작
+- entity에 맞춰서 repository 제작
+- service로 화면에 필요한 작업 및 데이터 생성
+(sevice와 DTO가 제일 중요)
+
+- controller에서 service 결과 받아서 화면에 뿌리기
