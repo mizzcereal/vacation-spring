@@ -2,6 +2,7 @@ package com.example.my.domain.auth.service;
 
 import com.example.my.common.dto.LoginUserDTO;
 import com.example.my.common.dto.ResponseDTO;
+import com.example.my.common.exception.BadRequestException;
 import com.example.my.domain.auth.dto.ReqJoinDTO;
 import com.example.my.domain.auth.dto.ReqLoginDTO;
 import com.example.my.model.user.entity.UserEntity;
@@ -85,25 +86,23 @@ public class AuthServiceApiV1 {
                                 dto.getUser().getId().equals("") ||
                                 dto.getUser().getPassword() == null ||
                                 dto.getUser().getPassword().equals("")) {
-                        return new ResponseEntity<>(
-                                        ResponseDTO.builder()
-                                                        .code(1)
-                                                        .message("아이디랑 비밀번호를 입력해주세요")
-                                                        .build(),
-                                        HttpStatus.BAD_REQUEST);
+
+                                throw new BadRequestException("아이디랑 비밀번호를 입력해주세요"); //common파일에 BadRequestException.java에 오류 메시지를 던져버린 것      
+
+
+                        // return new ResponseEntity<>(
+                        //                 ResponseDTO.builder()
+                        //                                 .code(1)
+                        //                                 .message("아이디랑 비밀번호를 입력해주세요")
+                        //                                 .build(),
+                        //                 HttpStatus.BAD_REQUEST); // 이 코드가 할 일을 위에 throw로 던져서 대신 실행시키는 것
                 }
                 // 리파지토리에서 아이디로 유저 찾기
                 Optional<UserEntity> userEntityOptional = userRepository.findById(dto.getUser().getId());
 
                 // 있으면 (이미 존재하는 아이디입니다.) 메시지 리턴
                 if (userEntityOptional.isPresent()) {
-                        return new ResponseEntity<>(
-                                        ResponseDTO.builder()
-                                                        .code(1)
-                                                        .message("이미 존재하는 아이디입니다.")
-                                                        .build(),
-                                        HttpStatus.BAD_REQUEST);
-
+                       throw new BadRequestException("이미 존재하는 아아디입니다.");
                 }
 
                 // 없으면 회원가입 처리
