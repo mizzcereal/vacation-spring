@@ -1,5 +1,6 @@
 package com.example.my.domain.auth.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class ReqJoinDTO {
 
+    @Valid
     @NotNull(message = "유저 정보를 입력해주세요.")
     private User user;
 
