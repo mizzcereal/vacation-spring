@@ -32,36 +32,23 @@ public class AuthServiceApiV1 {
                                 dto.getUser().getId().equals("") ||
                                 dto.getUser().getPassword() == null ||
                                 dto.getUser().getPassword().equals("")) {
-                        return new ResponseEntity<>(
-                                        ResponseDTO.builder()
-                                                        .code(1)
-                                                        .message("아이디랑 비밀번호를 입력해주세요")
-                                                        .build(),
-                                        HttpStatus.BAD_REQUEST);
-                }
+
+                                throw new BadRequestException("아이디랑 비밀번호를 입력해 주세요");    
+                                
+                 }
                 // 리파지토리에서 아이디로 삭제되지 않은 유저 찾기
                 Optional<UserEntity> userEntityOptional = userRepository
                                 .findByIdAndDeleteDateIsNull(dto.getUser().getId());
                 // 없으면 (존재하지 않는 사용자입니다.) 메시지 리턴
                 if (userEntityOptional.isEmpty()) {
-                        return new ResponseEntity<>(
-                                        ResponseDTO.builder()
-                                                        .code(1)
-                                                        .message("존재하지 않는 사용자입니다.")
-                                                        .build(),
-                                        HttpStatus.BAD_REQUEST);
+                        throw new BadRequestException("존재하지 않는 사용자입니다.");
                 }
 
                 UserEntity userEntity = userEntityOptional.get();
 
                 // 비밀번호가 일치하지 않으면 (비밀번호가 일치하지 않습니다.) 메시지 리턴
                 if (!userEntity.getPassword().equals(dto.getUser().getPassword())) {
-                        return new ResponseEntity<>(
-                                        ResponseDTO.builder()
-                                                        .code(1)
-                                                        .message("비밀번호가 일치하지 않습니다.")
-                                                        .build(),
-                                        HttpStatus.BAD_REQUEST);
+                       throw new BadRequestException("비밀번호가 일치하지않습니다.");
                 }
 
                 // 세션에 로그인 유저 정보 저장
