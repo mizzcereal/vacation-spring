@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>form Get</h1>
+    <form action="/temp" method="get">
+        <!-- action은 매핑주소 -->
+        <input type="text" name = "name">
+        <input type="text" name = "age">
+        <!-- name은 반드시 controller 매개변수와 같은 걸로 해야함 -->
+        <button>제출</button>
+        <!-- submit을 넣으면 작동으로 form 제출 -->
+    </form>
+    <hr>
+    <h1>from Post</h1>
+    <form action="/temp" method="post">
+        <!-- action은 매핑주소 -->
+        <!-- post로 하면 값을 입력받아 제출해도 주소창에 값이 뜨지 않음 즉 로그인, 회원가입할때사용해야함 -->
+        <input type="text" name = "name">
+        <input type="text" name = "age">
+        <!-- name은 반드시 controller 매개변수와 같은 걸로 해야함 -->
+        <button>제출</button>
+        <!-- submit을 넣으면 작동으로 form 제출 -->
+    <hr>
+    <h1>form Post file</h1>
+      <form action="/file" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" multiple>
+        <button>제출</button>
+      </form>
+  </body>
+</html>

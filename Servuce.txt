@@ -1,0 +1,12 @@
+ //안녕하세요 라는 title을 가진 List<PostEntity>
+        // List<PostEntity> postEntityList = postRepository.findByTitle("안녕하세요");
+
+
+        //"안녕"title이 포함된 List<PostEntity>찾기
+        // List<PostEntity> postEntityListContaining = postRepository.findByTitleContaining("안녕");
+
+        //"첫번쨰"라는 글자가 title또는 content에 포함된 List<PostEntity> 찾기
+        // List<PostEntity> postEntityListFirstContaining = postRepository.findByTitleContainingOrContentContaining("첫번쨰", "첫번쨰");
+
+        //"두번째"라는 title과 "반갑습니다"라는 content가 정확히 일치하는 List<PostEntity>찾기
+        // List<PostEntity> postEntityListSecond = postRepository.findByTitleAndContent("두번째", "반갑습니다");
