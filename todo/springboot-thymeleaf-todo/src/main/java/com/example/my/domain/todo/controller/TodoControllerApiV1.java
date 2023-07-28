@@ -5,6 +5,7 @@ import com.example.my.domain.todo.dto.ReqTodoTableInsertDTO;
 import com.example.my.domain.todo.dto.ReqTodoTableUpdateDoneYnDTO;
 import com.example.my.domain.todo.service.TodoServiceApiV1;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,11 +25,11 @@ public class TodoControllerApiV1 {
 
     @PostMapping
     public ResponseEntity<?> insertTodoTableData(
-            @RequestBody ReqTodoTableInsertDTO dto,
+            @Valid @RequestBody ReqTodoTableInsertDTO dto,
             HttpSession session
     ) {
         // TODO : 서비스에서 할 일 추가하기
-        return null;
+        return todoServiceApiV1.insertTodoTableData(dto,  session.);
     }
 
     @PutMapping("/{todoIdx}")

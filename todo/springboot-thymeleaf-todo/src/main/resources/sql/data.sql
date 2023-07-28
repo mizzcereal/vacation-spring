@@ -10,7 +10,7 @@ VALUES (1, 'ADMIN', now()),
 
 
 INSERT INTO `todo` (`user_idx`, `content`, `done_yn`, `create_date`)
-VALUES (2, '일어나기', 'Y', now()),
+VALUES (1, '일어나기', 'Y', now()),
        (2, '양치하기', 'Y', now()),
        (2, '샤워하기', 'N', now()),
        (2, '출근하기', 'N', now()),
