@@ -26,10 +26,11 @@ public class TodoControllerApiV1 {
     @PostMapping
     public ResponseEntity<?> insertTodoTableData(
             @Valid @RequestBody ReqTodoTableInsertDTO dto,
+            LoginUserDTO loginUserDTO,
             HttpSession session
     ) {
         // TODO : 서비스에서 할 일 추가하기
-        return todoServiceApiV1.insertTodoTableData(dto,  session.);
+        return todoServiceApiV1.insertTodoTableData(dto, loginUserDTO, session);
     }
 
     @PutMapping("/{todoIdx}")

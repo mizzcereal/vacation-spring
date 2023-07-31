@@ -56,9 +56,7 @@ public class TodoServiceApiV1 {
                 .content(dto.getTodo().getContent())
                 .build();
         // TODO : 할 일 엔티티 저장
-        todoRepository.save(todoEntity);
-
-        session.setAttribute("dto", LoginUserDTO.of(null));
+        session.setAttribute("dto",  todoRepository.save(todoEntity));
         // TODO : 응답 데이터로 리턴하기 (할 일 추가에 성공하였습니다.)
         return new ResponseEntity<>(
                 ResponseDTO.builder()

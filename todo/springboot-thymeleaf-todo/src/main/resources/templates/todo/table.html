@@ -173,11 +173,34 @@
         if (contentInput.value === "") return;
 
         // TODO: 할 일 저장
-
+        const dto = {
+          todo : {
+            contentInput: document.getElementById("content").value
+          }
+        }
         // dto만들기 (ReqTodoTableInsertDTO 참고)
+        const reqTodoTableInsertDTO = {
+          content : JSON.stringify(contentInput)
+        }
 
         // fetch로 POST 요청하기
+        fetch("/api/v1/todo", {
+        method : "POST",
+        headers : {
+          "Content-Type" : "application/json;charset=utf-8"
+        },
+        body : JSON.stringify(dto) 
+      })
+        .then((response) => response.json())
+        .then((result) => {
 
+          alert(result.message);
+
+          if(result.code === 0){
+            // 회원가입 성공
+            location.replace("/");
+          }
+        })
         // 응답 CODE가 0이면 새로고침(LOCATION==REROAL;)
     });
 
