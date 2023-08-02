@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>로그인</h1>
+    <div>로그인<input id="id" type="아이디를 입력해주세요" /></div>
+    <div>비밀번호 <input id="password" type="비밀번호를 입력해주세요" /></div>
+    <div>
+      <button onclick="requestLogin()">로그인</button>
+    </div>
+
+    <script>
+      const requestLogin = () => {
+        const idInputTag = document.querySelector("#id");
+        const passwordInputTag = document.querySelector("#password");
+
+        if (idInputTag.value == "") {
+          alert("아이디를 입력해주세요");
+          return;
+        }
+        if (passwordInputTag.value == "") {
+          alert("비밀번호를 입력해주세요");
+          return;
+        }
+
+        const dto = {
+        //ReqLoginDTO.java 변수명
+          user: {
+            id: idInputTag.value,
+            password: passwordInputTag.value,
+          },
+        };
+
+        fetch("/api/v1/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dto),
+        })
+          // 이게 response(응답)이다.
+          .then((reponse) => reponse.text()) // 대부분 통신에서 이걸 사용
+          .then((result) => {
+            alert(result);
+          });
+      };
+    </script>
+  </body>
+</html>
