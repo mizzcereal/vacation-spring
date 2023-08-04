@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            text-align: center;
+            width: 120px;
+            height: 120px;
+        }   
+        .result{
+            background-color: orange;
+            color: white;
+            width: 25px;
+            height: 25px;
+        }
+        .clear{
+            background-color: aqua;
+            color : white;
+            width: 25px;
+            height: 25px;
+        }
+        .num{
+            background-color: pink;
+            color: orange;
+            width: 25px;
+            height: 25px;
+        }
+        .equal{
+            background-color: red;
+            color : white;
+            width : 25px;
+            height: 25px;
+        }
+    </style>    
+</head>
+<body>
+    <table class="btn">
+        <tbody>
+            <tr>
+                <td class = "result" colspan="4">25</td>
+            </tr>
+            <tr class="num">
+                <td class="clear" colspan="2">clear</td>
+                <td class="num">-</td>
+                <td >+</td>
+            </tr>
+            <tr class="num">
+                <td class="num">7</td>
+                <td class="num">8</td>
+                <td>9</td>
+                <td>/</td>
+            </tr>
+            <tr class ="num">
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>x</td>
+            </tr>
+            <tr class="num">
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td class="equal" rowspan="2">=</td>
+            </tr>
+            <tr class="num">
+                <td colspan="2">0</td>
+                <td>.</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

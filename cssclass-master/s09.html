@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        background-color: red;
+        width: 200px;
+        transition-delay: 2s;
+      }
+      h1:hover {
+        background-color: greenyellow;
+        transition-duration: 5s;
+        width: 500px;
+      }
+      @keyframes bgchange {
+        0% {
+          background-color: red;
+        }
+        25% {
+          background-color: orange;
+        }
+        50% {
+          background-color: yellow;
+        }
+        75% {
+          background-color: green;
+        }
+        100% {
+          background-color: red;
+        } /* } 퍼센트마다 자신이 원하는 것을 하면됨 */
+      }
+      h2 {
+        background-color: red;
+        animation-name: bgchange;
+        animation-duration: 5s;
+        animation-fill-mode: forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>트랜지션</h1>
+    <h2>애니메이션</h2>
+  </body>
+</html>

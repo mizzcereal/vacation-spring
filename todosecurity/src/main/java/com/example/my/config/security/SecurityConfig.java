@@ -43,21 +43,30 @@ public class SecurityConfig {
         );
 
         httpSecurity.authorizeHttpRequests(config -> config
-                .requestMatchers("/auth/**", "/api/*/auth/**")
-                .permitAll()
-                .requestMatchers("/admin/**", "/api/*/admin/**")
-                .hasRole("ADMIN")
-                .anyRequest()
-                .authenticated()
+                .requestMatchers("/auth/**", "/api/*/auth/**") // 이주소로 온 애들 
+                .permitAll() //전부 허용
+                .requestMatchers("/admin/**", "/api/*/admin/**") // 이 주소로 온애들
+                .hasRole("ADMIN") // Admon역할만허용
+                .anyRequest() //나머지 모든 요청
+                .authenticated() // 로그인이 된 사람만 허용 
+                
+                //인증(로그인) (Auithorization) 안에 권한(Authority) 와 인증(Auithorization)이 있다.
         );
 
         httpSecurity.formLogin(config -> config
+                // 로그인 페이지 매핑 주소
                 .loginPage("/auth/login")
+                // 로그인 api 요청시 사용할 주소
                 .loginProcessingUrl("/api/v1/auth/login")
+                // 로그인 아이디 파라미터명(input 태그 name)
                 .usernameParameter("id")
+                // 로그인 비밀번호 파라미터명(input 태그 name)
                 .passwordParameter("password")
+                // 로그인 처리 성공시 유저에게 보낼 내용
                 .successHandler(authenticationSuccessHandler)
+                // 로그인 처리 실패시 유저에게 보낼 내용
                 .failureHandler(authenticationFailureHandler)
+                // 모두 허용
                 .permitAll()
         );
 

@@ -80,7 +80,7 @@
                 </div>
                 <button
                   class="btn btn-primary"
-                  type="submit"
+                  type="button"
                   style="width: 100%"
                   onclick="requestJoin()"
                 >
@@ -107,32 +107,39 @@
         return;
       }
 
-      // TODO 회원가입 요청
+      // 유저 정보가 담긴 태그를 id로 가져옴
+      const idElement = document.getElementById("id");
+      const pwElement = document.getElementById("password");
+
+      // 유저 정보를 객체로 만듬
       const dto = {
-        user: {
-          id: document.getElementById("id").value,
-          password: document.getElementById("password").value,
-        },
+        user : {
+            id: idElement.value,
+            password: pwElement.value,
+        }
       };
 
+      //  rest 통신
       fetch("/api/v1/auth/join", {
-        method : "POST",
-        headers : {
-          "Content-Type" : "application/json;charset=utf-8"
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
         },
-        body : JSON.stringify(dto)
+        body: JSON.stringify(dto),
       })
-        .then((response) => response.json())
+        .then((res) =>  res.json())
         .then((result) => {
-
-          alert(result.message);
-
-          if(result.code === 0){
-            // 회원가입 성공
+          if (result.code === 0) {
+            // 회원 가입 완료 시 로그인 페이지로 이동
+            alert(result.message);
             location.replace("/auth/login");
+          } else {
+            alert(result.message);
           }
         })
-
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     // 유효성 검사 ( 아이디, 비밀번호 등 내용이 비어있는지 확인 )
@@ -170,5 +177,23 @@
       return true;
     };
 
+    // 실제로 통신하는 코드 예제
+    //   fetch("/api/login", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //     .then((res) => res.json())
+    //     .then((res) => {
+    //       if (res.success) {
+    //         alert("로그인 성공");
+    //         location.href = "/";
+    //       } else {
+    //         alert("로그인 실패");
+    //       }
+    //     });
+    // };
   </script>
 </html>

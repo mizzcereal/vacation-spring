@@ -1,0 +1,41 @@
+.container{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    height: 300px;
+}
+
+    /* flex-direction: row; */
+    /* content는 여러 줄에 대한 설정 */
+    /* justify-content: space-evenly; */
+    /* items는 한 줄에 대한 설정 */
+    /* align-items: center;  */
+
+.item1{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    width: 50px;
+    height: 50px;
+}
+
+.item2{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    width: 50px;
+    height: 50px;
+    /* order : 1; */
+}
+
+.item3{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    width: 50px;
+    height: 50px;
+    align-self: self-start;
+}
